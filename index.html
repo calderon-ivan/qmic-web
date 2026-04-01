@@ -435,6 +435,8 @@
     }
     .cta-sub { font-size: 18px; color: var(--muted); margin-bottom: 44px; font-weight: 400; }
     .cta-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto 14px; }
+    .cta-form-full { max-width: 520px; margin: 0 auto 14px; display: flex; flex-direction: column; gap: 10px; }
+    .form-row { display: flex; gap: 10px; }
     .cta-input {
       flex: 1; background: var(--white); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 12px 16px;
@@ -445,6 +447,9 @@
     .cta-input:focus { border-color: rgb(124 58 237 / 0.4); }
     .cta-note { font-size: 12px; color: var(--muted-light); }
     .cta-note a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .form-msg { font-size: 13px; text-align: center; min-height: 20px; }
+    .form-msg.ok { color: #16a34a; }
+    .form-msg.err { color: #dc2626; }
 
     /* FOOTER */
     footer { border-top: 1px solid var(--border-light); padding: 40px 0; }
@@ -491,6 +496,7 @@
       .hero{padding:110px 0 72px}
       .testimonial-card{padding:36px 28px}
       .cta-form{flex-direction:column}
+      .form-row{flex-direction:column}
       .footer-top{flex-direction:column;gap:28px}
       .footer-bottom{flex-direction:column;align-items:flex-start;gap:10px}
       .proof-inner{flex-direction:column;gap:12px;align-items:flex-start}
@@ -507,7 +513,6 @@
         <ul class="nav-links">
           <li><a href="#como-funciona">Cómo funciona</a></li>
           <li><a href="#casos">Casos de uso</a></li>
-          <li><a href="#precios">Precios</a></li>
         </ul>
         <div class="nav-right">
           <a href="https://app.qmic.es/JoinRoom" class="nav-attendee">Soy asistente</a>
@@ -521,7 +526,6 @@
     <div class="mobile-nav" id="mobile-nav">
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#casos">Casos de uso</a>
-      <a href="#precios">Precios</a>
       <a href="https://app.qmic.es/JoinRoom">Soy asistente</a>
       <a href="#demo">Solicitar demo</a>
     </div>
@@ -811,8 +815,8 @@
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="pricing-section" id="precios">
+  <!-- PRICING — oculto temporalmente -->
+  <section class="pricing-section" id="precios" style="display:none">
     <div class="container">
       <span class="section-eyebrow">Precios</span>
       <h2 class="section-heading">Empieza gratis. Escala cuando lo necesites.</h2>
@@ -919,10 +923,19 @@
       <div class="cta-inner reveal">
         <h2 class="cta-title">Tu próximo evento merece<br/><span class="gradient-text">una mejor dinámica</span></h2>
         <p class="cta-sub">Solicita una demo gratuita y lo probamos juntos en 20 minutos.</p>
-        <form class="cta-form" onsubmit="handleSubmit(event)">
-          <input type="email" id="emailInput" class="cta-input" placeholder="tu@empresa.com" required />
-          <button type="submit" class="btn btn-primary btn-lg">Quiero mi demo</button>
+
+        <form class="cta-form-full" id="demoForm" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <input type="text" id="nameInput" class="cta-input" placeholder="Tu nombre" required autocomplete="name" />
+            <input type="text" id="companyInput" class="cta-input" placeholder="Empresa" autocomplete="organization" />
+          </div>
+          <div class="form-row">
+            <input type="email" id="emailInput" class="cta-input" placeholder="tu@empresa.com" required autocomplete="email" />
+            <button type="submit" id="submitBtn" class="btn btn-primary btn-lg">Quiero mi demo</button>
+          </div>
+          <div id="formMsg" class="form-msg" aria-live="polite"></div>
         </form>
+
         <p class="cta-note">Sin compromiso · Respuesta en menos de 24h · <a href="mailto:hola@qmic.es">hola@qmic.es</a></p>
       </div>
     </div>
@@ -999,12 +1012,95 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Form
-    function handleSubmit(e) {
+    // Form — Google Sheets via Apps Script webhook
+    // Instrucciones para activar: ver comentario al final del script
+    const SHEETS_URL = 'TU_APPS_SCRIPT_URL_AQUI'; // <-- pega aquí tu URL de Apps Script
+
+    async function handleSubmit(e) {
       e.preventDefault();
-      const email = document.getElementById('emailInput').value;
-      window.location.href = `mailto:hola@qmic.es?subject=Solicitud de demo&body=Hola,%0A%0AQuiero solicitar una demo de Qmic.%0A%0AMi email: ${encodeURIComponent(email)}`;
+      const btn  = document.getElementById('submitBtn');
+      const msg  = document.getElementById('formMsg');
+      const name = document.getElementById('nameInput').value.trim();
+      const company = document.getElementById('companyInput').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      msg.className = 'form-msg';
+      msg.textContent = '';
+
+      const payload = {
+        fecha: new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' }),
+        nombre: name,
+        empresa: company,
+        email: email,
+        origen: document.referrer || 'directo'
+      };
+
+      // Si no hay URL configurada, caer a mailto
+      if (!SHEETS_URL || SHEETS_URL === 'TU_APPS_SCRIPT_URL_AQUI') {
+        window.location.href = `mailto:hola@qmic.es?subject=Solicitud de demo&body=Nombre: ${encodeURIComponent(name)}%0AEmpresa: ${encodeURIComponent(company)}%0AEmail: ${encodeURIComponent(email)}`;
+        return;
+      }
+
+      try {
+        await fetch(SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Apps Script no admite CORS, pero el envío funciona
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        // no-cors devuelve opaque response, asumimos éxito si no hay error
+        msg.className = 'form-msg ok';
+        msg.textContent = 'Recibido. Te contactamos en menos de 24h.';
+        document.getElementById('demoForm').reset();
+      } catch (err) {
+        msg.className = 'form-msg err';
+        msg.textContent = 'Algo falló. Escríbenos directamente a hola@qmic.es';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Quiero mi demo';
+      }
     }
+
+    /*
+    ─── CÓMO CONECTAR GOOGLE SHEETS ───────────────────────────────────────────
+
+    1. Abre Google Sheets → crea una hoja nueva con estas columnas en fila 1:
+       Fecha | Nombre | Empresa | Email | Origen
+
+    2. Ve a Extensiones → Apps Script → pega este código:
+
+    function doPost(e) {
+      const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      const data = JSON.parse(e.postData.contents);
+      sheet.appendRow([
+        data.fecha,
+        data.nombre,
+        data.empresa,
+        data.email,
+        data.origen
+      ]);
+      return ContentService.createTextOutput('OK');
+    }
+
+    3. Guarda el script (Ctrl+S).
+
+    4. Haz clic en "Implementar" → "Nueva implementación":
+       - Tipo: Aplicación web
+       - Ejecutar como: Yo
+       - Quién tiene acceso: Cualquier usuario
+       → Copia la URL que te da.
+
+    5. Pega esa URL en la variable SHEETS_URL de arriba.
+
+    ─── TAMBIÉN FUNCIONA CON NOTION ───────────────────────────────────────────
+    Usa Make.com (gratis hasta 1.000 operaciones/mes):
+    1. Crea un escenario: Webhook → Notion (añadir fila a base de datos)
+    2. Copia la URL del webhook de Make y pégala en SHEETS_URL.
+    3. En el módulo Notion, mapea los campos: fecha, nombre, empresa, email, origen.
+    ───────────────────────────────────────────────────────────────────────────
+    */
   </script>
 </body>
 </html>
