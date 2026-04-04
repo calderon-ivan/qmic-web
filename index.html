@@ -936,7 +936,7 @@
           <div id="formMsg" class="form-msg" aria-live="polite"></div>
         </form>
 
-        <p class="cta-note">Sin compromiso · Respuesta en menos de 24h · <a href="mailto:hola@qmic.es">hola@qmic.es</a></p>
+        <p class="cta-note">Sin compromiso · Respuesta en menos de 24h</p>
       </div>
     </div>
   </section>
@@ -969,13 +969,12 @@
         <div class="footer-col">
           <h4>Contacto</h4>
           <ul>
-            <li><a href="mailto:hola@qmic.es">hola@qmic.es</a></li>
             <li><a href="#demo">Solicitar demo</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span class="footer-copy">© 2025 Qmic. Todos los derechos reservados.</span>
+        <span class="footer-copy">© 2026 Qmic. Todos los derechos reservados.</span>
         <a href="https://app.qmic.es/JoinRoom" class="footer-attendee">
           <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="1" width="10" height="12" rx="2"/>
@@ -1038,7 +1037,7 @@
       };
 
       // Si no hay URL configurada, caer a mailto
-      if (!SHEETS_URL || SHEETS_URL === 'TU_APPS_SCRIPT_URL_AQUI') {
+      if (!SHEETS_URL || SHEETS_URL === 'https://script.google.com/macros/s/AKfycbz9RN1djj60160oqyCMyrhXC2Z0vUZ_kJvCmpW-UyQKG1LVCimkhGMQP-Me0cFREf4G_A/exec') {
         window.location.href = `mailto:hola@qmic.es?subject=Solicitud de demo&body=Nombre: ${encodeURIComponent(name)}%0AEmpresa: ${encodeURIComponent(company)}%0AEmail: ${encodeURIComponent(email)}`;
         return;
       }
