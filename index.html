@@ -1038,7 +1038,7 @@
       };
 
       // Si no hay URL configurada, caer a mailto
-      if (!SHEETS_URL || SHEETS_URL === 'https://script.google.com/macros/s/AKfycbz9RN1djj60160oqyCMyrhXC2Z0vUZ_kJvCmpW-UyQKG1LVCimkhGMQP-Me0cFREf4G_A/exec') {
+      if (!SHEETS_URL || SHEETS_URL === 'TU_APP_SCRIPT_AQUI') {
         window.location.href = `mailto:hola@qmic.es?subject=Solicitud de demo&body=Nombre: ${encodeURIComponent(name)}%0AEmpresa: ${encodeURIComponent(company)}%0AEmail: ${encodeURIComponent(email)}`;
         return;
       }
@@ -1062,45 +1062,6 @@
         btn.textContent = 'Quiero mi demo';
       }
     }
-
-    /*
-    ─── CÓMO CONECTAR GOOGLE SHEETS ───────────────────────────────────────────
-
-    1. Abre Google Sheets → crea una hoja nueva con estas columnas en fila 1:
-       Fecha | Nombre | Empresa | Email | Origen
-
-    2. Ve a Extensiones → Apps Script → pega este código:
-
-    function doPost(e) {
-      const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-      const data = JSON.parse(e.postData.contents);
-      sheet.appendRow([
-        data.fecha,
-        data.nombre,
-        data.empresa,
-        data.email,
-        data.origen
-      ]);
-      return ContentService.createTextOutput('OK');
-    }
-
-    3. Guarda el script (Ctrl+S).
-
-    4. Haz clic en "Implementar" → "Nueva implementación":
-       - Tipo: Aplicación web
-       - Ejecutar como: Yo
-       - Quién tiene acceso: Cualquier usuario
-       → Copia la URL que te da.
-
-    5. Pega esa URL en la variable SHEETS_URL de arriba.
-
-    ─── TAMBIÉN FUNCIONA CON NOTION ───────────────────────────────────────────
-    Usa Make.com (gratis hasta 1.000 operaciones/mes):
-    1. Crea un escenario: Webhook → Notion (añadir fila a base de datos)
-    2. Copia la URL del webhook de Make y pégala en SHEETS_URL.
-    3. En el módulo Notion, mapea los campos: fecha, nombre, empresa, email, origen.
-    ───────────────────────────────────────────────────────────────────────────
-    */
   </script>
 </body>
 </html>
