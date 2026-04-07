@@ -243,7 +243,7 @@
           <div class="plan-tagline">Para formadores y equipos</div>
           <div class="plan-price-row">
             <span class="plan-currency" id="cur-starter">€</span>
-            <span class="plan-price" id="price-starter" data-evento="39" data-mensual="49" data-anual="35">39</span>
+            <span class="plan-price" id="price-starter" data-evento="39" data-mensual="49" data-anual="35">35</span>
           </div>
           <div class="plan-period" id="period-starter" data-evento="Pago único" data-mensual="Por mes" data-anual="Por mes · €420 por año">pago único</div>
           <div class="plan-divider"></div>
@@ -265,7 +265,7 @@
           <div class="plan-tagline">Para empresas con eventos frecuentes</div>
           <div class="plan-price-row">
             <span class="plan-currency" id="cur-pro">€</span>
-            <span class="plan-price" id="price-pro" data-evento="79" data-mensual="99" data-anual="65">79</span>
+            <span class="plan-price" id="price-pro" data-evento="79" data-mensual="99" data-anual="65">65</span>
           </div>
           <div class="plan-period" id="period-pro" data-evento="pago único" data-mensual="Por mes" data-anual="Por mes · €780 por año">pago único</div>
           <div class="plan-divider"></div>
@@ -514,12 +514,12 @@
     const PRICES = {
       evento:  { free:'0', starter:'39',  pro:'79',  enterprise:'A medida' },
       mensual: { free:'0', starter:'49',  pro:'99',  enterprise:'A medida' },
-      anual:   { free:'0', starter:'399', pro:'799', enterprise:'A medida' }
+      anual:   { free:'0', starter:'35', pro:'65', enterprise:'A medida' }
     };
     const PERIODS = {
       evento:  { free:'',         starter:'pago único', pro:'pago único', enterprise:'' },
       mensual: { free:'Por mes',  starter:'Por mes',    pro:'Por mes',    enterprise:'' },
-      anual:   { free:'por año',  starter:'por año',    pro:'por año',    enterprise:'' }
+      anual:   { free:'Por año',  starter:'Por mes · €420 por año',    pro:'Por mes · €780 por año',    Enterprise:'' }
     };
 
     function updatePrices(mode) {
