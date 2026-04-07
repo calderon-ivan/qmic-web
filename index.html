@@ -1063,5 +1063,52 @@
       }
     }
   </script>
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); max-width:640px; width:90%; background:#020617; color:#e2e8f0; border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,0.4); font-family:Geist, sans-serif; z-index:9999;">
+  
+  <p style="margin:0 0 12px 0; font-size:14px; line-height:1.5;">
+    Usamos cookies propias para el funcionamiento básico de la web. 
+    No utilizamos cookies publicitarias ni de terceros.
+  </p>
+
+  <div style="display:flex; gap:10px; justify-content:flex-end;">
+    <button id="reject-cookies" 
+      style="padding:8px 14px; border-radius:10px; border:1px solid #334155; background:transparent; color:#cbd5f5; cursor:pointer;">
+      Rechazar
+    </button>
+
+    <button id="accept-cookies" 
+      style="padding:8px 14px; border-radius:10px; border:none; background:linear-gradient(to right, #7c3aed, #d946ef); color:white; cursor:pointer;">
+      Aceptar
+    </button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const rejectBtn = document.getElementById('reject-cookies');
+
+    const COOKIE_KEY = 'qmic_cookie_consent';
+
+    // Mostrar banner si no hay decisión
+    if (!localStorage.getItem(COOKIE_KEY)) {
+      banner.style.display = 'block';
+    }
+
+    // Aceptar
+    acceptBtn.addEventListener('click', function() {
+      localStorage.setItem(COOKIE_KEY, 'accepted');
+      banner.style.display = 'none';
+    });
+
+    // Rechazar
+    rejectBtn.addEventListener('click', function() {
+      localStorage.setItem(COOKIE_KEY, 'rejected');
+      banner.style.display = 'none';
+    });
+  })();
+</script>
 </body>
 </html>
