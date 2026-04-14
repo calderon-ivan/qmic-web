@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Cookies — Qmic</title>
+  <meta name="description" content="Política de cookies de Qmic. Qué cookies usamos, para qué y cómo gestionarlas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #ffffff; --background: #f8fafc; --border: #e2e8f0;
+      --border-light: #f1f5f9; --foreground: #0f172a; --muted: #64748b;
+      --muted-light: #94a3b8; --violet: #7c3aed; --fuchsia: #c026d3;
+      --violet-light: #ede9fe; --font: 'Geist', -apple-system, sans-serif;
+      --font-mono: 'Geist Mono', monospace;
+      --radius-sm: 8px; --radius: 12px; --radius-lg: 16px;
+      --radius-xl: 20px; --radius-2xl: 24px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--white); color: var(--foreground); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .gradient-text { background: linear-gradient(135deg, var(--violet), var(--fuchsia)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font); font-size: 14px; font-weight: 600; border-radius: var(--radius); padding: 10px 20px; text-decoration: none; border: none; cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
+    .btn-primary { background: linear-gradient(135deg, var(--violet), var(--fuchsia)); color: #fff; box-shadow: 0 1px 2px rgb(124 58 237 / 0.3); }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+    nav.scrolled { border-bottom-color: var(--border-light); }
+    .nav-inner { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--foreground); text-decoration: none; letter-spacing: -0.03em; display: flex; align-items: center; gap: 5px; }
+    .logo-dot { width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--violet), var(--fuchsia)); display: inline-block; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--foreground); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-attendee { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-attendee:hover { color: var(--foreground); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 20px; height: 1.5px; background: var(--foreground); border-radius: 2px; }
+    .mobile-nav { display: none; flex-direction: column; gap: 2px; padding: 12px 24px 20px; border-top: 1px solid var(--border-light); background: rgba(255,255,255,0.97); }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 15px; font-weight: 500; color: var(--foreground); text-decoration: none; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
+    .mobile-nav a:last-child { border-bottom: none; color: var(--violet); font-weight: 700; }
+
+    .page-hero { padding: 120px 0 64px; border-bottom: 1px solid var(--border-light); position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse at center, rgb(124 58 237 / 0.05) 0%, transparent 70%); pointer-events: none; }
+    .page-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); background: var(--violet-light); padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 900; letter-spacing: -0.035em; line-height: 1.05; color: var(--foreground); margin-bottom: 16px; }
+    .page-hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 24px; }
+    .meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted-light); font-weight: 500; }
+    .meta-item svg { width: 13px; height: 13px; color: var(--violet); flex-shrink: 0; }
+
+    .legal-layout { display: grid; grid-template-columns: 220px 1fr; gap: 60px; padding: 64px 0 100px; align-items: start; }
+    .legal-index { position: sticky; top: 80px; }
+    .legal-index-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-light); margin-bottom: 12px; }
+    .legal-index ul { list-style: none; }
+    .legal-index ul li { margin-bottom: 2px; }
+    .legal-index ul a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: var(--radius-sm); display: block; transition: all 0.15s; border-left: 2px solid transparent; }
+    .legal-index ul a:hover { color: var(--foreground); background: var(--background); border-left-color: var(--violet); }
+
+    .legal-content { min-width: 0; }
+    .legal-section { margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid var(--border-light); }
+    .legal-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .legal-section-number { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); font-family: var(--font-mono); margin-bottom: 10px; display: block; }
+    .legal-section h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.025em; color: var(--foreground); margin-bottom: 20px; line-height: 1.2; }
+    .legal-section p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul { margin: 16px 0; padding-left: 0; list-style: none; }
+    .legal-section ul li { font-size: 15px; color: var(--muted); line-height: 1.7; padding: 7px 0 7px 24px; position: relative; border-bottom: 1px solid var(--border-light); }
+    .legal-section ul li:last-child { border-bottom: none; }
+    .legal-section ul li::before { content: ''; position: absolute; left: 0; top: 15px; width: 6px; height: 6px; border-radius: 50%; background: linear-gradient(135deg, var(--violet), var(--fuchsia)); }
+
+    .callout { border-radius: var(--radius-lg); padding: 20px 24px; margin: 24px 0; border: 1px solid; }
+    .callout-info { background: var(--violet-light); border-color: rgb(124 58 237 / 0.2); }
+    .callout-info p { font-size: 14px; color: var(--violet); font-weight: 500; margin: 0; line-height: 1.6; }
+    .callout-info strong { color: var(--violet); }
+    .callout-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; display: block; color: var(--violet); }
+
+    /* COOKIE TABLE */
+    .cookie-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .cookie-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-light); padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    .cookie-table td { font-size: 14px; color: var(--muted); padding: 12px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.6; }
+    .cookie-table tr:last-child td { border-bottom: none; }
+    .cookie-table td:first-child { font-weight: 600; color: var(--foreground); font-family: var(--font-mono); font-size: 13px; }
+    .cookie-table tr:hover td { background: var(--background); }
+
+    /* COOKIE TYPE BADGE */
+    .badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+    .badge-required { background: var(--violet-light); color: var(--violet); }
+    .badge-optional { background: #fef9c3; color: #92400e; }
+
+    /* BROWSER GRID */
+    .browser-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+    .browser-card { background: var(--background); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px 20px; transition: border-color 0.2s; }
+    .browser-card:hover { border-color: rgb(124 58 237 / 0.25); }
+    .browser-card-name { font-size: 14px; font-weight: 700; color: var(--foreground); margin-bottom: 6px; }
+    .browser-card a { font-size: 13px; color: var(--violet); text-decoration: none; font-weight: 500; }
+    .browser-card a:hover { text-decoration: underline; }
+
+    /* CONTACT */
+    .contact-card { background: var(--background); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 28px 32px; margin-top: 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .contact-card-icon { width: 44px; height: 44px; border-radius: var(--radius); background: var(--violet-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-card-icon svg { width: 20px; height: 20px; color: var(--violet); }
+    .contact-card-text { flex: 1; min-width: 0; }
+    .contact-card-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--foreground); margin-bottom: 2px; }
+    .contact-card-text span { font-size: 13px; color: var(--muted); }
+    .contact-card a { color: var(--violet); text-decoration: none; font-weight: 600; }
+
+    footer { border-top: 1px solid var(--border-light); padding: 40px 0; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
+    .footer-brand p { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 200px; line-height: 1.5; }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--foreground); text-decoration: none; letter-spacing: -0.025em; display: flex; align-items: center; gap: 5px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-light); margin-bottom: 12px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 7px; }
+    .footer-col ul a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--foreground); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-light); }
+    .footer-copy { font-size: 12px; color: var(--muted-light); }
+    .footer-attendee { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--violet); text-decoration: none; transition: opacity 0.15s; }
+    .footer-attendee:hover { opacity: 0.75; }
+    .footer-attendee svg { width: 13px; height: 13px; }
+
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media(max-width: 860px) { .legal-layout { grid-template-columns: 1fr; gap: 40px; } .legal-index { position: static; display: none; } .browser-grid { grid-template-columns: 1fr; } }
+    @media(max-width: 640px) { .page-hero { padding: 100px 0 48px; } .footer-top { flex-direction: column; gap: 28px; } .nav-links, .nav-attendee { display: none; } .hamburger { display: flex; } }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">Qmic <span class="logo-dot"></span></a>
+        <ul class="nav-links">
+          <li><a href="/#como-funciona">Cómo funciona</a></li>
+          <li><a href="/precios.html">Precios</a></li>
+          <li><a href="/#casos">Casos de uso</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="https://app.qmic.es/JoinRoom" class="nav-attendee">Soy asistente</a>
+          <a href="/#demo" class="btn btn-primary">Solicitar demo</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/precios.html">Precios</a>
+      <a href="/#casos">Casos de uso</a>
+      <a href="https://app.qmic.es/JoinRoom">Soy asistente</a>
+      <a href="/#demo">Solicitar demo →</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">Legal</span>
+      <h1>Política de <span class="gradient-text">Cookies</span></h1>
+      <p style="font-size:16px;color:var(--muted);line-height:1.7;max-width:520px;margin-top:8px;">Qué cookies utilizamos en qmic.es, para qué sirven y cómo puedes gestionarlas o desactivarlas.</p>
+      <div class="page-hero-meta">
+        <span class="meta-item">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v3.5l2 1.5"/></svg>
+          Última actualización: marzo 2026
+        </span>
+        <span class="meta-item">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 4v3c0 3.3 2.5 6.4 6 7 3.5-.6 6-3.7 6-7V4L7 1z"/></svg>
+          Cumplimiento LSSI
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="legal-layout">
+
+      <aside class="legal-index">
+        <p class="legal-index-title">Contenido</p>
+        <ul>
+          <li><a href="#que-son">1. Qué son las cookies</a></li>
+          <li><a href="#que-usamos">2. Cookies que usamos</a></li>
+          <li><a href="#terceros">3. Cookies de terceros</a></li>
+          <li><a href="#gestion">4. Cómo gestionar las cookies</a></li>
+          <li><a href="#consecuencias">5. Desactivar cookies</a></li>
+          <li><a href="#cambios">6. Cambios en esta política</a></li>
+          <li><a href="#contacto">7. Contacto</a></li>
+        </ul>
+      </aside>
+
+      <main class="legal-content">
+
+        <div class="callout callout-info" style="margin-bottom:48px;">
+          <span class="callout-label">Resumen</span>
+          <p>Qmic usa solo cookies técnicas necesarias para que la web funcione y cookies de sesión para mantener tu acceso como Organizador. <strong>No usamos cookies de publicidad ni de seguimiento de terceros.</strong></p>
+        </div>
+
+        <!-- 1 -->
+        <div class="legal-section reveal" id="que-son">
+          <span class="legal-section-number">01</span>
+          <h2>Qué son las cookies</h2>
+          <p>Las cookies son pequeños archivos de texto que un sitio web almacena en tu navegador cuando lo visitas. Sirven para que la web recuerde información entre páginas o visitas, como tus preferencias o si has iniciado sesión.</p>
+          <p>Existen distintos tipos según su finalidad y duración:</p>
+          <ul>
+            <li><strong>Cookies técnicas o necesarias:</strong> imprescindibles para que el sitio funcione correctamente. No requieren consentimiento.</li>
+            <li><strong>Cookies de preferencias:</strong> recuerdan tus ajustes (idioma, región, etc.).</li>
+            <li><strong>Cookies analíticas:</strong> permiten medir el uso de la web de forma agregada.</li>
+            <li><strong>Cookies de marketing:</strong> se usan para personalizar publicidad. Qmic no las utiliza.</li>
+          </ul>
+        </div>
+
+        <!-- 2 -->
+        <div class="legal-section reveal" id="que-usamos">
+          <span class="legal-section-number">02</span>
+          <h2>Cookies que usamos en qmic.es</h2>
+          <p>A continuación se detallan todas las cookies que puede instalar qmic.es y la aplicación app.qmic.es:</p>
+
+          <table class="cookie-table">
+            <thead>
+              <tr><th>Nombre</th><th>Finalidad</th><th>Duración</th><th>Tipo</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>session_id</td>
+                <td>Mantiene la sesión iniciada del Organizador en el panel de control</td>
+                <td>Sesión (se elimina al cerrar el navegador)</td>
+                <td><span class="badge badge-required">Necesaria</span></td>
+              </tr>
+              <tr>
+                <td>csrf_token</td>
+                <td>Protección contra ataques de falsificación de solicitudes. Seguridad técnica.</td>
+                <td>Sesión</td>
+                <td><span class="badge badge-required">Necesaria</span></td>
+              </tr>
+              <tr>
+                <td>cookie_consent</td>
+                <td>Recuerda si has aceptado o rechazado cookies opcionales</td>
+                <td>12 meses</td>
+                <td><span class="badge badge-required">Necesaria</span></td>
+              </tr>
+              <tr>
+                <td>_qmic_lang</td>
+                <td>Guarda tu preferencia de idioma</td>
+                <td>12 meses</td>
+                <td><span class="badge badge-optional">Preferencias</span></td>
+              </tr>
+              <tr>
+                <td>_qmic_theme</td>
+                <td>Guarda tu preferencia de tema visual (claro/oscuro) si la activas</td>
+                <td>12 meses</td>
+                <td><span class="badge badge-optional">Preferencias</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Qmic <strong>no utiliza cookies analíticas</strong> de tipo Google Analytics ni similares, ni cookies publicitarias o de remarketing de ningún tipo. Si esto cambia en el futuro, actualizaremos esta política y solicitaremos tu consentimiento.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="legal-section reveal" id="terceros">
+          <span class="legal-section-number">03</span>
+          <h2>Cookies de terceros</h2>
+          <p>Qmic puede incluir funcionalidades de terceros que, a su vez, instalan sus propias cookies. En la actualidad, los únicos terceros con presencia técnica en qmic.es son:</p>
+          <ul>
+            <li><strong>Google Fonts:</strong> para cargar la tipografía Geist desde servidores de Google. Google puede registrar la solicitud de la fuente aunque no instala cookies propias en tu dispositivo.</li>
+            <li><strong>Stripe:</strong> en la página de pago, Stripe puede instalar cookies técnicas necesarias para procesar la transacción de forma segura. Puedes consultar la política de privacidad de Stripe en <a href="https://stripe.com/es/privacy" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:none;font-weight:600;">stripe.com/es/privacy</a>.</li>
+          </ul>
+          <p>No tenemos control sobre las cookies instaladas por estos terceros, aunque hemos elegido proveedores con altos estándares de privacidad y cumplimiento del RGPD.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="legal-section reveal" id="gestion">
+          <span class="legal-section-number">04</span>
+          <h2>Cómo gestionar las cookies</h2>
+          <p>Puedes aceptar, rechazar o eliminar las cookies opcionales en cualquier momento. Todas las cookies técnicas necesarias no se pueden desactivar sin afectar al funcionamiento del sitio.</p>
+          <p>Además del panel de preferencias de Qmic, puedes gestionar las cookies directamente desde tu navegador:</p>
+          <div class="browser-grid">
+            <div class="browser-card">
+              <div class="browser-card-name">Google Chrome</div>
+              <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Ver instrucciones →</a>
+            </div>
+            <div class="browser-card">
+              <div class="browser-card-name">Mozilla Firefox</div>
+              <a href="https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en" target="_blank" rel="noopener">Ver instrucciones →</a>
+            </div>
+            <div class="browser-card">
+              <div class="browser-card-name">Safari (macOS / iOS)</div>
+              <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Ver instrucciones →</a>
+            </div>
+            <div class="browser-card">
+              <div class="browser-card-name">Microsoft Edge</div>
+              <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Ver instrucciones →</a>
+            </div>
+          </div>
+          <p style="margin-top:8px;">También puedes gestionar las preferencias de cookies de múltiples sitios a través de plataformas como <a href="https://www.youronlinechoices.eu" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:none;font-weight:600;">Your Online Choices</a>.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="legal-section reveal" id="consecuencias">
+          <span class="legal-section-number">05</span>
+          <h2>¿Qué pasa si desactivo las cookies?</h2>
+          <p>Las cookies opcionales (preferencias) pueden desactivarse sin impacto en la funcionalidad principal. Solo perderás ajustes guardados como el idioma o el tema visual.</p>
+          <p>Las cookies técnicas necesarias no pueden desactivarse sin afectar al funcionamiento del sitio. Si las desactivas desde el navegador:</p>
+          <ul>
+            <li>No podrás mantener la sesión iniciada como Organizador — tendrás que identificarte en cada visita.</li>
+            <li>Algunas páginas podrían no cargar correctamente.</li>
+            <li>El formulario de contacto podría no funcionar (protección CSRF).</li>
+          </ul>
+          <p>Si tienes dudas sobre qué cookies son estrictamente necesarias para el uso que haces de Qmic, escríbenos y te lo explicamos.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="legal-section reveal" id="cambios">
+          <span class="legal-section-number">06</span>
+          <h2>Cambios en esta política</h2>
+          <p>Podemos actualizar esta Política de Cookies cuando incorporemos nuevas funcionalidades, servicios de terceros o en respuesta a cambios normativos. Cuando lo hagamos, actualizaremos la fecha de "última actualización" al inicio del documento.</p>
+          <p>Si los cambios son sustanciales —por ejemplo, si empezamos a usar cookies analíticas o publicitarias— te lo notificaremos mediante un aviso en la web y solicitaremos tu consentimiento nuevamente.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="legal-section reveal" id="contacto">
+          <span class="legal-section-number">07</span>
+          <h2>Contacto</h2>
+          <p>Si tienes preguntas sobre las cookies que usamos o sobre cómo tratamos tus datos de navegación:</p>
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z"/>
+                <path d="M2 5l8 6 8-6"/>
+              </svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>Contacto sobre privacidad y cookies</strong>
+              <span><a href="mailto:hola@qmic.es">hola@qmic.es</a> — Respondemos en menos de 72 horas hábiles.</span>
+            </div>
+          </div>
+          <p style="margin-top:20px;">Puedes también consultar nuestra <a href="/privacidad.html" style="color:var(--violet);text-decoration:none;font-weight:600;">Política de Privacidad</a> y nuestros <a href="/terminos.html" style="color:var(--violet);text-decoration:none;font-weight:600;">Términos y Condiciones</a> para una visión completa de cómo tratamos los datos en Qmic.</p>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">Qmic <span class="logo-dot"></span></a>
+          <p>El micrófono virtual para eventos que fluyen.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <ul>
+            <li><a href="/#como-funciona">Cómo funciona</a></li>
+            <li><a href="/precios.html">Precios</a></li>
+            <li><a href="/#casos">Casos de uso</a></li>
+            <li><a href="https://app.qmic.es">Acceder</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacidad.html">Política de privacidad</a></li>
+            <li><a href="/terminos.html">Términos de uso</a></li>
+            <li><a href="/cookies.html">Cookies</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:hola@qmic.es">hola@qmic.es</a></li>
+            <li><a href="/#demo">Solicitar demo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Qmic. Todos los derechos reservados.</span>
+        <a href="https://app.qmic.es/JoinRoom" class="footer-attendee">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="1" width="10" height="12" rx="2"/><path d="M5 4h4M5 7h4M5 10h2"/></svg>
+          Soy asistente — unirme a una sala
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    let open = false;
+    hamburger.addEventListener('click', () => { open = !open; mobileNav.classList.toggle('open', open); });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { open = false; mobileNav.classList.remove('open'); }));
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } }); }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
