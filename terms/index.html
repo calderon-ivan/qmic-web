@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones — Qmic</title>
+  <meta name="description" content="Términos y condiciones de uso del servicio Qmic. Conoce las condiciones que regulan el uso de nuestra plataforma." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:        #ffffff;
+      --background:   #f8fafc;
+      --border:       #e2e8f0;
+      --border-light: #f1f5f9;
+      --foreground:   #0f172a;
+      --muted:        #64748b;
+      --muted-light:  #94a3b8;
+      --violet:       #7c3aed;
+      --fuchsia:      #c026d3;
+      --violet-light: #ede9fe;
+      --font:         'Geist', -apple-system, sans-serif;
+      --font-mono:    'Geist Mono', monospace;
+      --radius-sm:    8px;
+      --radius:       12px;
+      --radius-lg:    16px;
+      --radius-xl:    20px;
+      --radius-2xl:   24px;
+      --shadow-sm:    0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow:       0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md:    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg:    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      border-radius: var(--radius); padding: 10px 20px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.15s ease; white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+      color: #fff;
+      box-shadow: 0 1px 2px rgb(124 58 237 / 0.3);
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 24px rgb(124 58 237 / 0.25); }
+    .btn-outline {
+      background: transparent; color: var(--foreground);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--background); border-color: var(--muted-light); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--border-light); }
+    .nav-inner {
+      height: 60px; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+    }
+    .nav-logo {
+      font-size: 18px; font-weight: 800; color: var(--foreground);
+      text-decoration: none; letter-spacing: -0.03em;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .logo-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+      display: inline-block;
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--foreground); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-attendee {
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .nav-attendee:hover { color: var(--foreground); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 6px; flex-direction: column; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--foreground); border-radius: 2px; transition: all 0.3s;
+    }
+    .mobile-nav {
+      display: none; flex-direction: column; gap: 2px;
+      padding: 12px 24px 20px;
+      border-top: 1px solid var(--border-light);
+      background: rgba(255,255,255,0.97);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 15px; font-weight: 500; color: var(--foreground);
+      text-decoration: none; padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .mobile-nav a:last-child { border-bottom: none; color: var(--violet); font-weight: 700; }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 120px 0 64px;
+      border-bottom: 1px solid var(--border-light);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: -150px; left: 50%;
+      transform: translateX(-50%); width: 800px; height: 500px;
+      background: radial-gradient(ellipse at center,
+        rgb(124 58 237 / 0.05) 0%, rgb(192 38 211 / 0.02) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-inner { position: relative; }
+    .page-eyebrow {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--violet);
+      background: var(--violet-light); padding: 4px 12px;
+      border-radius: 100px; margin-bottom: 20px;
+    }
+    .page-hero h1 {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 900;
+      letter-spacing: -0.035em; line-height: 1.05;
+      color: var(--foreground); margin-bottom: 16px;
+    }
+    .page-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .meta-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--muted-light); font-weight: 500;
+    }
+    .meta-item svg { width: 13px; height: 13px; color: var(--violet); flex-shrink: 0; }
+
+    /* INDEX SIDEBAR LAYOUT */
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 60px;
+      padding: 64px 0 100px;
+      align-items: start;
+    }
+    .legal-index {
+      position: sticky; top: 80px;
+    }
+    .legal-index-title {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted-light);
+      margin-bottom: 12px;
+    }
+    .legal-index ul { list-style: none; }
+    .legal-index ul li { margin-bottom: 2px; }
+    .legal-index ul a {
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; padding: 5px 10px; border-radius: var(--radius-sm);
+      display: block; transition: all 0.15s;
+      border-left: 2px solid transparent;
+    }
+    .legal-index ul a:hover {
+      color: var(--foreground);
+      background: var(--background);
+      border-left-color: var(--violet);
+    }
+
+    /* LEGAL CONTENT */
+    .legal-content { min-width: 0; }
+
+    .legal-section {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .legal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .legal-section-number {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--violet);
+      font-family: var(--font-mono); margin-bottom: 10px;
+      display: block;
+    }
+    .legal-section h2 {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.025em;
+      color: var(--foreground); margin-bottom: 20px; line-height: 1.2;
+    }
+    .legal-section p {
+      font-size: 15px; color: var(--muted); line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul, .legal-section ol {
+      margin: 16px 0; padding-left: 0; list-style: none;
+    }
+    .legal-section ul li, .legal-section ol li {
+      font-size: 15px; color: var(--muted); line-height: 1.7;
+      padding: 7px 0 7px 24px; position: relative;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .legal-section ul li:last-child, .legal-section ol li:last-child {
+      border-bottom: none;
+    }
+    .legal-section ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 15px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+    }
+    .legal-section ol { counter-reset: item; }
+    .legal-section ol li { counter-increment: item; }
+    .legal-section ol li::before {
+      content: counter(item);
+      position: absolute; left: 0; top: 7px;
+      font-size: 11px; font-weight: 700; color: var(--violet);
+      font-family: var(--font-mono);
+    }
+
+    /* CALLOUT BOXES */
+    .callout {
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border: 1px solid;
+    }
+    .callout-info {
+      background: var(--violet-light);
+      border-color: rgb(124 58 237 / 0.2);
+    }
+    .callout-info p {
+      font-size: 14px; color: var(--violet); font-weight: 500;
+      margin: 0; line-height: 1.6;
+    }
+    .callout-info strong { color: var(--violet); }
+    .callout-warn {
+      background: #fefce8;
+      border-color: #fde047;
+    }
+    .callout-warn p {
+      font-size: 14px; color: #854d0e; font-weight: 500;
+      margin: 0; line-height: 1.6;
+    }
+
+    .callout-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 6px; display: block;
+    }
+    .callout-info .callout-label { color: var(--violet); }
+    .callout-warn .callout-label { color: #92400e; }
+
+    /* CONTACT CARD */
+    .contact-card {
+      background: var(--background); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: 28px 32px; margin-top: 24px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .contact-card-icon {
+      width: 44px; height: 44px; border-radius: var(--radius);
+      background: var(--violet-light); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
+    .contact-card-icon svg { width: 20px; height: 20px; color: var(--violet); }
+    .contact-card-text { flex: 1; min-width: 0; }
+    .contact-card-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--foreground); margin-bottom: 2px; }
+    .contact-card-text span { font-size: 13px; color: var(--muted); }
+    .contact-card a { color: var(--violet); text-decoration: none; font-weight: 600; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* DEFINITION TABLE */
+    .def-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .def-table th {
+      text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted-light);
+      padding: 10px 14px; border-bottom: 1px solid var(--border);
+    }
+    .def-table td {
+      font-size: 14px; color: var(--muted); padding: 12px 14px;
+      border-bottom: 1px solid var(--border-light); vertical-align: top;
+    }
+    .def-table tr:last-child td { border-bottom: none; }
+    .def-table td:first-child { font-weight: 600; color: var(--foreground); white-space: nowrap; }
+    .def-table tr:hover td { background: var(--background); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border-light); padding: 40px 0; }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px; flex-wrap: wrap; margin-bottom: 36px;
+    }
+    .footer-brand p { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 200px; line-height: 1.5; }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--foreground); text-decoration: none; letter-spacing: -0.025em; display: flex; align-items: center; gap: 5px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-light); margin-bottom: 12px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 7px; }
+    .footer-col ul a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--foreground); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-light);
+    }
+    .footer-copy { font-size: 12px; color: var(--muted-light); }
+    .footer-attendee {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--violet); text-decoration: none; transition: opacity 0.15s;
+    }
+    .footer-attendee:hover { opacity: 0.75; }
+    .footer-attendee svg { width: 13px; height: 13px; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media(max-width: 860px) {
+      .legal-layout { grid-template-columns: 1fr; gap: 40px; }
+      .legal-index { position: static; display: none; }
+    }
+    @media(max-width: 640px) {
+      .page-hero { padding: 100px 0 48px; }
+      .footer-top { flex-direction: column; gap: 28px; }
+      .nav-links, .nav-attendee { display: none; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">Qmic <span class="logo-dot"></span></a>
+        <ul class="nav-links">
+          <li><a href="/#como-funciona">Cómo funciona</a></li>
+          <li><a href="/pricing">Precios</a></li>
+          <li><a href="/#casos">Casos de uso</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="https://app.qmic.es/JoinRoom" class="nav-attendee">Soy asistente</a>
+          <a href="/#demo" class="btn btn-primary">Solicitar demo</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/pricing">Precios</a>
+      <a href="/#casos">Casos de uso</a>
+      <a href="https://app.qmic.es/JoinRoom">Soy asistente</a>
+      <a href="/#demo">Solicitar demo →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container-narrow">
+      <div class="page-hero-inner">
+        <span class="page-eyebrow">Legal</span>
+        <h1>Términos y <span class="gradient-text">Condiciones</span></h1>
+        <p style="font-size:16px;color:var(--muted);line-height:1.7;max-width:560px;margin-top:8px;">
+          Estas condiciones regulan el acceso y uso del servicio Qmic. Por favor, léelas antes de utilizar la plataforma.
+        </p>
+        <div class="page-hero-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v3.5l2 1.5"/></svg>
+            Última actualización: marzo 2026
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 4v3c0 3.3 2.5 6.4 6 7 3.5-.6 6-3.7 6-7V4L7 1z"/></svg>
+            Cumplimiento RGPD
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v3h3"/></svg>
+            Versión 1.0
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGAL BODY -->
+  <div class="container">
+    <div class="legal-layout">
+
+      <!-- SIDEBAR INDEX -->
+      <aside class="legal-index">
+        <p class="legal-index-title">Contenido</p>
+        <ul>
+          <li><a href="#definiciones">1. Definiciones</a></li>
+          <li><a href="#objeto">2. Objeto del servicio</a></li>
+          <li><a href="#acceso">3. Acceso y registro</a></li>
+          <li><a href="#planes">4. Planes y pagos</a></li>
+          <li><a href="#organizadores">5. Obligaciones del organizador</a></li>
+          <li><a href="#asistentes">6. Asistentes y grabaciones</a></li>
+          <li><a href="#datos">7. Protección de datos</a></li>
+          <li><a href="#propiedad">8. Propiedad intelectual</a></li>
+          <li><a href="#responsabilidad">9. Limitación de responsabilidad</a></li>
+          <li><a href="#suspension">10. Suspensión y cancelación</a></li>
+          <li><a href="#modificaciones">11. Modificaciones</a></li>
+          <li><a href="#legislacion">12. Legislación aplicable</a></li>
+          <li><a href="#contacto">13. Contacto</a></li>
+        </ul>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="legal-content">
+
+        <div class="callout callout-info" style="margin-bottom:48px;">
+          <span class="callout-label">Resumen</span>
+          <p>Qmic es una plataforma de gestión de turnos de palabra para eventos. El <strong>organizador</strong> (tu empresa) contrata el servicio y es responsable de su uso con los asistentes. Qmic actúa como procesador técnico. Si activas la grabación, los asistentes son informados antes de participar.</p>
+        </div>
+
+        <!-- 1. DEFINICIONES -->
+        <div class="legal-section reveal" id="definiciones">
+          <span class="legal-section-number">01</span>
+          <h2>Definiciones</h2>
+          <p>A efectos de estos Términos y Condiciones, se entenderá por:</p>
+          <table class="def-table">
+            <thead>
+              <tr>
+                <th>Término</th>
+                <th>Significado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Qmic / Plataforma</td>
+                <td>El servicio de micrófonos virtuales y gestión de turnos de palabra accesible en app.qmic.es y qmic.es, titularidad de Qmic.</td>
+              </tr>
+              <tr>
+                <td>Organizador</td>
+                <td>La persona física o jurídica que contrata el servicio Qmic para gestionar eventos propios o de terceros.</td>
+              </tr>
+              <tr>
+                <td>Asistente</td>
+                <td>Cualquier persona que accede a un evento creado en Qmic, normalmente mediante código QR o enlace, sin necesidad de crear una cuenta.</td>
+              </tr>
+              <tr>
+                <td>Evento</td>
+                <td>Cada sesión, reunión, formación o acto creado por el Organizador dentro de la Plataforma.</td>
+              </tr>
+              <tr>
+                <td>Intervención</td>
+                <td>El uso del micrófono por parte de un Asistente durante un turno de palabra concedido por el Organizador.</td>
+              </tr>
+              <tr>
+                <td>Grabación</td>
+                <td>La captura de audio de las Intervenciones, cuando el Organizador activa expresamente esta funcionalidad.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 2. OBJETO -->
+        <div class="legal-section reveal" id="objeto">
+          <span class="legal-section-number">02</span>
+          <h2>Objeto del servicio</h2>
+          <p>Qmic proporciona una plataforma tecnológica que permite a los Organizadores gestionar turnos de palabra en eventos presenciales, híbridos o remotos, convirtiendo los dispositivos móviles de los Asistentes en micrófonos virtuales.</p>
+          <p>Las funcionalidades principales incluyen:</p>
+          <ul>
+            <li>Creación y gestión de eventos con código QR de acceso.</li>
+            <li>Cola de solicitudes de turno de palabra en tiempo real.</li>
+            <li>Activación y desactivación del micrófono de los Asistentes por parte del Organizador.</li>
+            <li>Grabación opcional de intervenciones (cuando el Organizador la activa).</li>
+            <li>Análisis de intervenciones mediante inteligencia artificial (cuando el Organizador lo solicita expresamente).</li>
+            <li>Historial y analítica de participación por evento.</li>
+          </ul>
+          <p>Qmic no garantiza la disponibilidad ininterrumpida del servicio, aunque se compromete a mantener un nivel de disponibilidad razonable y a comunicar con antelación cualquier mantenimiento planificado.</p>
+        </div>
+
+        <!-- 3. ACCESO -->
+        <div class="legal-section reveal" id="acceso">
+          <span class="legal-section-number">03</span>
+          <h2>Acceso y registro</h2>
+          <p>El uso de Qmic como Organizador requiere la creación de una cuenta mediante dirección de correo electrónico válida. El Organizador es responsable de mantener la confidencialidad de sus credenciales de acceso y de todas las actividades realizadas desde su cuenta.</p>
+          <p>Los Asistentes acceden a los eventos sin necesidad de registro, a través del código QR o enlace generado por el Organizador. Al acceder, aceptan las condiciones de uso aplicables a los asistentes descritas en la sección 6 de este documento.</p>
+          <p>Qmic se reserva el derecho de suspender o cancelar cuentas que incumplan estos Términos, con o sin previo aviso según la gravedad de la infracción.</p>
+        </div>
+
+        <!-- 4. PLANES Y PAGOS -->
+        <div class="legal-section reveal" id="planes">
+          <span class="legal-section-number">04</span>
+          <h2>Planes y pagos</h2>
+          <p>Qmic ofrece distintos planes de acceso. Las condiciones económicas vigentes en cada momento están disponibles en <a href="/pricing" style="color:var(--violet);text-decoration:none;font-weight:600;">qmic.es/precios</a>.</p>
+          <ul>
+            <li>Los precios indicados no incluyen el IVA aplicable, que será añadido en el momento de la facturación según la normativa vigente.</li>
+            <li>El pago se realiza por adelantado para los planes mensuales y anuales, o por evento para la modalidad pay-per-event.</li>
+            <li>El Organizador recibirá una factura por cada cargo realizado en la dirección de correo electrónico asociada a su cuenta.</li>
+            <li>No se realizan reembolsos por periodos ya iniciados, salvo en los casos previstos por la legislación aplicable o por acuerdo expreso entre las partes.</li>
+            <li>Los planes anuales incluyen un descuento respecto a la tarifa mensual equivalente. Dicho descuento se aplica en el momento de la contratación y no es acumulable con otras promociones.</li>
+          </ul>
+          <div class="callout callout-warn">
+            <span class="callout-label">Importante</span>
+            <p>Qmic se reserva el derecho de modificar sus tarifas con un preaviso mínimo de 30 días. Los cambios no afectarán a los periodos ya contratados y pagados.</p>
+          </div>
+        </div>
+
+        <!-- 5. OBLIGACIONES DEL ORGANIZADOR -->
+        <div class="legal-section reveal" id="organizadores">
+          <span class="legal-section-number">05</span>
+          <h2>Obligaciones del organizador</h2>
+          <p>Al contratar el servicio Qmic, el Organizador acepta las siguientes obligaciones:</p>
+          <ul>
+            <li>Utilizar la Plataforma conforme a la legalidad vigente y a estos Términos.</li>
+            <li>No ceder sus credenciales de acceso a terceros no autorizados.</li>
+            <li>Informar a los Asistentes de las condiciones del evento, incluyendo cualquier política interna de grabación o uso de datos, con carácter previo a su participación.</li>
+            <li>No utilizar Qmic para la transmisión de contenidos ilegales, discriminatorios, difamatorios o que vulneren derechos de terceros.</li>
+            <li>Custodiar de forma responsable los datos de los Asistentes obtenidos a través de la Plataforma.</li>
+            <li>Cumplir con la normativa aplicable en materia de protección de datos personales (RGPD y LOPDGDD) respecto a los Asistentes de sus eventos.</li>
+          </ul>
+          <p>El Organizador es el <strong>responsable del tratamiento</strong> de los datos personales de los Asistentes a sus eventos. Qmic actúa como encargado del tratamiento por cuenta del Organizador, en los términos descritos en la sección 7.</p>
+        </div>
+
+        <!-- 6. ASISTENTES Y GRABACIONES -->
+        <div class="legal-section reveal" id="asistentes">
+          <span class="legal-section-number">06</span>
+          <h2>Asistentes y grabaciones</h2>
+          <p>Los Asistentes acceden a los eventos de Qmic a través de un código QR o enlace facilitado por el Organizador. Al acceder, el Asistente acepta participar en el evento en las condiciones establecidas por el Organizador.</p>
+
+          <div class="callout callout-info">
+            <span class="callout-label">Grabación y análisis con IA</span>
+            <p>Cuando el Organizador activa la funcionalidad de grabación, <strong>los Asistentes son informados de ello antes de entrar al evento</strong>. La pantalla de acceso indica expresamente que el evento está siendo grabado y que las intervenciones podrán ser analizadas posteriormente. Participar en el evento tras recibir este aviso constituye el consentimiento del Asistente al registro de su voz.</p>
+          </div>
+
+          <p>En relación con la grabación y el análisis de intervenciones:</p>
+          <ul>
+            <li>La grabación es una funcionalidad opcional que el Organizador activa o desactiva por evento.</li>
+            <li>Cuando está activa, los Asistentes son informados en el momento de acceder al evento, antes de intervenir.</li>
+            <li>El análisis mediante inteligencia artificial solo se produce cuando el Organizador lo solicita expresamente, una vez finalizado el evento.</li>
+            <li>El Organizador es responsable de gestionar los derechos de acceso, rectificación y supresión de los Asistentes respecto a sus grabaciones.</li>
+            <li>Las grabaciones están alojadas en servidores seguros y no son accesibles por terceros sin autorización del Organizador.</li>
+          </ul>
+          <p>Los Asistentes pueden abandonar el evento en cualquier momento. Si un Asistente no desea ser grabado, debe comunicarlo al Organizador del evento antes de participar con el micrófono.</p>
+        </div>
+
+        <!-- 7. PROTECCIÓN DE DATOS -->
+        <div class="legal-section reveal" id="datos">
+          <span class="legal-section-number">07</span>
+          <h2>Protección de datos</h2>
+          <p>El tratamiento de datos personales en el contexto de Qmic se rige por el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales (LOPDGDD).</p>
+          <p><strong>Roles en el tratamiento:</strong></p>
+          <ul>
+            <li><strong>Qmic como responsable:</strong> trata los datos de los Organizadores (nombre, empresa, correo, datos de facturación) para la prestación del servicio, gestión de cuentas y comunicaciones comerciales relacionadas.</li>
+            <li><strong>Qmic como encargado del tratamiento:</strong> cuando procesa datos de los Asistentes (incluyendo grabaciones de voz) por instrucción y cuenta del Organizador, actúa como encargado del tratamiento. El Organizador es en este caso el responsable.</li>
+          </ul>
+          <p>Los datos de los Organizadores se conservan durante la vigencia de la cuenta y hasta 5 años adicionales tras su cancelación, por obligaciones legales y fiscales.</p>
+          <p>Para más información sobre el tratamiento de datos personales, consulta nuestra <a href="/privacy" style="color:var(--violet);text-decoration:none;font-weight:600;">Política de Privacidad</a>.</p>
+        </div>
+
+        <!-- 8. PROPIEDAD INTELECTUAL -->
+        <div class="legal-section reveal" id="propiedad">
+          <span class="legal-section-number">08</span>
+          <h2>Propiedad intelectual</h2>
+          <p>Todos los elementos que integran la Plataforma Qmic —incluyendo, sin carácter limitativo, el software, diseño, logotipos, textos, iconos y funcionalidades— son titularidad de Qmic o de sus licenciantes, y están protegidos por la normativa española e internacional sobre propiedad intelectual e industrial.</p>
+          <p>El Organizador recibe una licencia de uso limitada, no exclusiva e intransferible para acceder y utilizar la Plataforma durante la vigencia de su plan contratado. Esta licencia no incluye el derecho a reproducir, modificar, distribuir, realizar ingeniería inversa ni explotar comercialmente ningún elemento de la Plataforma.</p>
+          <p>El contenido generado por el Organizador y los Asistentes durante los eventos (intervenciones, grabaciones, transcripciones) es propiedad de sus autores. Qmic no reclama ningún derecho de propiedad sobre dicho contenido, aunque puede procesarlo técnicamente para la prestación del servicio.</p>
+        </div>
+
+        <!-- 9. LIMITACIÓN DE RESPONSABILIDAD -->
+        <div class="legal-section reveal" id="responsabilidad">
+          <span class="legal-section-number">09</span>
+          <h2>Limitación de responsabilidad</h2>
+          <p>Qmic presta el servicio "tal como está" y no garantiza que esté libre de interrupciones, errores o vulnerabilidades, aunque se compromete a adoptar medidas razonables de seguridad y calidad.</p>
+          <p>Qmic no será responsable por:</p>
+          <ul>
+            <li>Interrupciones del servicio derivadas de causas de fuerza mayor, fallos en redes de terceros o mantenimientos programados debidamente comunicados.</li>
+            <li>El uso que el Organizador haga de la Plataforma o de los datos obtenidos a través de ella.</li>
+            <li>La calidad del audio de las intervenciones, que depende del dispositivo y la conexión de cada Asistente.</li>
+            <li>Daños indirectos, pérdida de beneficios o daño reputacional derivados del uso o la imposibilidad de uso de la Plataforma.</li>
+            <li>Incumplimientos del Organizador respecto a sus obligaciones legales con los Asistentes.</li>
+          </ul>
+          <p>En ningún caso la responsabilidad total de Qmic frente al Organizador superará el importe pagado por éste en los 12 meses anteriores al hecho generador del daño.</p>
+        </div>
+
+        <!-- 10. SUSPENSIÓN Y CANCELACIÓN -->
+        <div class="legal-section reveal" id="suspension">
+          <span class="legal-section-number">10</span>
+          <h2>Suspensión y cancelación</h2>
+          <p>El Organizador puede cancelar su cuenta en cualquier momento desde el panel de configuración o contactando con hola@qmic.es. La cancelación no genera derecho a reembolso por el periodo en curso.</p>
+          <p>Qmic podrá suspender o cancelar el acceso de un Organizador en los siguientes supuestos:</p>
+          <ul>
+            <li>Incumplimiento de estos Términos o de la legislación aplicable.</li>
+            <li>Uso fraudulento o abusivo de la Plataforma.</li>
+            <li>Falta de pago de las tarifas contratadas, tras notificación previa.</li>
+            <li>Solicitud del propio Organizador.</li>
+          </ul>
+          <p>En caso de cancelación, Qmic conservará los datos del Organizador durante el periodo legalmente exigible y procederá a eliminar las grabaciones y datos de Asistentes en un plazo máximo de 30 días, salvo obligación legal en contrario.</p>
+        </div>
+
+        <!-- 11. MODIFICACIONES -->
+        <div class="legal-section reveal" id="modificaciones">
+          <span class="legal-section-number">11</span>
+          <h2>Modificaciones de los términos</h2>
+          <p>Qmic se reserva el derecho de modificar estos Términos en cualquier momento. Cuando los cambios sean sustanciales, notificará al Organizador con al menos 15 días de antelación mediante correo electrónico a la dirección registrada en su cuenta.</p>
+          <p>El uso continuado de la Plataforma tras la entrada en vigor de los nuevos Términos implica la aceptación de los mismos. Si el Organizador no está de acuerdo con los cambios, podrá cancelar su cuenta antes de la fecha de entrada en vigor sin penalización adicional.</p>
+        </div>
+
+        <!-- 12. LEGISLACIÓN -->
+        <div class="legal-section reveal" id="legislacion">
+          <span class="legal-section-number">12</span>
+          <h2>Legislación aplicable y jurisdicción</h2>
+          <p>Estos Términos se rigen por la legislación española. Para la resolución de cualquier controversia derivada de la interpretación o aplicación de estos Términos, las partes se someten a los Juzgados y Tribunales de Valencia, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+          <p>En caso de controversia con consumidores, será de aplicación la normativa de protección de consumidores y usuarios vigente en España, incluyendo el Real Decreto Legislativo 1/2007.</p>
+        </div>
+
+        <!-- 13. CONTACTO -->
+        <div class="legal-section reveal" id="contacto">
+          <span class="legal-section-number">13</span>
+          <h2>Contacto</h2>
+          <p>Para cualquier consulta relacionada con estos Términos, el tratamiento de datos o el ejercicio de derechos, puedes contactar con nosotros a través de:</p>
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z"/>
+                <path d="M2 5l8 6 8-6"/>
+              </svg>
+            </div>
+            <div class="contact-card-text">
+              <strong>Correo electrónico</strong>
+              <span>Para consultas legales y de privacidad: <a href="mailto:hola@qmic.es">hola@qmic.es</a></span>
+            </div>
+          </div>
+          <p style="margin-top:20px;">Nos comprometemos a responder en un plazo máximo de 72 horas hábiles.</p>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">Qmic <span class="logo-dot"></span></a>
+          <p>El micrófono virtual para eventos que fluyen.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <ul>
+            <li><a href="/#como-funciona">Cómo funciona</a></li>
+            <li><a href="/pricing">Precios</a></li>
+            <li><a href="/#casos">Casos de uso</a></li>
+            <li><a href="https://app.qmic.es">Acceder</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy">Política de privacidad</a></li>
+            <li><a href="/terminos.html">Términos de uso</a></li>
+            <li><a href="/cookies.html">Cookies</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:hola@qmic.es">hola@qmic.es</a></li>
+            <li><a href="/#demo">Solicitar demo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Qmic. Todos los derechos reservados.</span>
+        <a href="https://app.qmic.es/JoinRoom" class="footer-attendee">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="1" width="10" height="12" rx="2"/>
+            <path d="M5 4h4M5 7h4M5 10h2"/>
+          </svg>
+          Soy asistente — unirme a una sala
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    let open = false;
+    hamburger.addEventListener('click', () => {
+      open = !open;
+      mobileNav.classList.toggle('open', open);
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      open = false; mobileNav.classList.remove('open');
+    }));
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
